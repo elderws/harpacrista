@@ -1,16 +1,62 @@
-# harpacrista
+# Harpacrista
 
-A new Flutter project.
+Aplicativo Harpa Crista gratis.
 
-## Getting Started
+## Começando
 
-This project is a starting point for a Flutter application.
+Este projeto é uma aplicação Flutter.
 
-A few resources to get you started if this is your first Flutter project:
+Alguns recursos para você começar se este for seu primeiro projeto Flutter:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- [Laboratório: Escreva seu primeiro aplicativo Flutter](https://docs.flutter.dev/get-started/codelab)
+- [Livro de receitas: exemplos úteis do Flutter](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Para obter ajuda para começar a desenvolver o Flutter, consulte o
+[documentação online](https://docs.flutter.dev/), que oferece tutoriais,
+exemplos, orientações sobre desenvolvimento móvel e uma referência completa da API.
+
+Claro, aqui está a resposta em português:
+
+### Estrutura do Projeto
+
+- **lib/main.dart**: Arquivo principal que inicializa o aplicativo e define a estrutura básica da interface do usuário.
+- **lib/harpas/home.dart**: Contém a tela principal para exibir a lista de hinos e gerenciar favoritos.
+- **lib/favoritos/home.dart**: Contém a tela para exibir e gerenciar a lista de hinos favoritos.
+- **lib/contatos/home.dart**: Contém a tela para exibir informações de contato.
+- **lib/doacoes/home.dart**: Contém a tela para gerenciar doações.
+- **lib/palavra/home.dart**: Contém a tela para exibir o louvor do dia.
+
+### Tecnologias Utilizadas
+
+- **Flutter**: Framework principal para desenvolvimento do aplicativo.
+- **Dart**: Linguagem de programação utilizada no desenvolvimento do aplicativo.
+- **path_provider**: Pacote utilizado para acessar o sistema de arquivos do dispositivo.
+- **animated_text_kit**: Pacote utilizado para animações de texto.
+- **flutter_svg**: Pacote utilizado para exibir imagens SVG.
+
+### Funcionalidades Principais
+
+- **Lista de Hinos**: Exibe uma lista de hinos com a opção de adicionar aos favoritos.
+- **Favoritos**: Permite adicionar e remover hinos da lista de favoritos.
+- **Louvor do Dia**: Exibe um louvor diário.
+- **Contatos**: Exibe informações de contato.
+- **Doações**: Gerencia doações.
+
+### Gerenciamento de Estado
+
+- **Stateful Widgets**: Utilizados para gerenciar o estado das telas e atualizar a interface do usuário conforme necessário.
+
+### Persistência de Dados
+
+- **File I/O**: Utilizado para salvar e ler a lista de hinos favoritos no sistema de arquivos do dispositivo.
+
+### API Utilizada
+
+- **API de Hinos**: O aplicativo utiliza uma API para buscar a lista de hinos. A API fornece os dados dos hinos, incluindo número, título e letras. A integração com a API é feita utilizando requisições HTTP e os dados são processados e exibidos no aplicativo.
+
+- **URL da API**: `http://overclock.kinghost.net:21055/hinos`
+- **Campos Retornados**:
+  - `numero` (int): Número do hino.
+  - `title` (String): Título do hino.
+  - `letra` (String): Letra do hino.
+  - Banco de Dados: A API está vinculada ao banco de dados MongoDB.
