@@ -40,7 +40,7 @@ class _FavoritosHomePageState extends State<FavoritosHomePage> {
       context: context,
       builder: (context) => AlertDialog(
         title: const Text('Remover dos Favoritos'),
-        content: const Text('Deseja remover este hino da lista de favoritos?'),
+        content: const Text('Tem certeza que deseja remover este item dos favoritos?'),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
@@ -71,13 +71,21 @@ class _FavoritosHomePageState extends State<FavoritosHomePage> {
       body: ListView.builder(
         itemCount: favoritos.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(favoritos[index]),
-            trailing: IconButton(
-              icon: const Icon(Icons.delete),
-              onPressed: () {
-                _removeFavorito(favoritos[index]);
-              },
+          return Card(
+            margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+            child: ListTile(
+              title: Text(favoritos[index]),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.delete),
+                    onPressed: () {
+                      _removeFavorito(favoritos[index]);
+                    },
+                  ),
+                ],
+              ),
             ),
           );
         },

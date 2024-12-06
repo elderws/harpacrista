@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:harpacrista/model/hino_list.dart';
 import 'package:harpacrista/model/Hino.dart';
 import 'package:harpacrista/harpas/letras_page.dart';
-import 'package:path_provider/path_provider.dart';
 import 'dart:io';
+import 'package:path_provider/path_provider.dart';
+import '../favoritos/FavoritosProvider.dart';
 
 class HarpasHomePage extends StatefulWidget {
   const HarpasHomePage({super.key});
@@ -14,7 +16,6 @@ class HarpasHomePage extends StatefulWidget {
 
 class _HarpasHomePageState extends State<HarpasHomePage> {
   late Future<List<Hino>> futureHinos;
-  List<String> favoritos = [];
 
   @override
   void initState() {
@@ -28,20 +29,21 @@ class _HarpasHomePageState extends State<HarpasHomePage> {
     final file = File('${directory.path}/favoritos.txt');
     if (await file.exists()) {
       final contents = await file.readAsString();
-      setState(() {
-        favoritos = contents.split('\n').where((line) => line.isNotEmpty).toList();
-      });
+      final favoritos = contents.split('\n').where((line) => line.isNotEmpty).toList();
+      Provider.of<FavoritosProvider>(context, listen: false).setFavoritos(favoritos);
     }
   }
 
   Future<void> _saveFavoritos() async {
+    final favoritos = Provider.of<FavoritosProvider>(context, listen: false).favoritos;
     final directory = await getApplicationDocumentsDirectory();
     final file = File('${directory.path}/favoritos.txt');
     await file.writeAsString(favoritos.join('\n'));
   }
 
   void _addFavorito(String favorito) async {
-    if (favoritos.contains(favorito)) {
+    final provider = Provider.of<FavoritosProvider>(context, listen: false);
+    if (provider.favoritos.contains(favorito)) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('O hino "$favorito" já está na lista de favoritos.')),
       );
@@ -67,9 +69,7 @@ class _HarpasHomePageState extends State<HarpasHomePage> {
     );
 
     if (shouldAdd == true) {
-      setState(() {
-        favoritos.add(favorito);
-      });
+      provider.addFavorito(favorito);
       _saveFavoritos();
     }
   }
@@ -94,7 +94,7 @@ class _HarpasHomePageState extends State<HarpasHomePage> {
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
                 final hino = snapshot.data![index];
-                final isFavorito = favoritos.contains(hino.title);
+                final isFavorito = Provider.of<FavoritosProvider>(context).favoritos.contains(hino.title);
                 return Card(
                   margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                   child: ListTile(

@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+import 'favoritos/FavoritosProvider.dart';
 import 'favoritos/home.dart';
 import 'harpas/home.dart';
-import 'contatos/home.dart';
-import 'doacoes/home.dart';
 import 'palavra/home.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => FavoritosProvider()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -98,30 +105,6 @@ class HomePage extends StatelessWidget {
                       );
                     },
                     child: const Text('Louvor do dia'),
-                  ),
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const ContatosHomePage()),
-                      );
-                    },
-                    child: const Text('Contatos'),
-                  ),
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const DoacoesHomePage()),
-                      );
-                    },
-                    child: const Text('Doações'),
                   ),
                 ),
               ],
