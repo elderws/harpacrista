@@ -22,8 +22,6 @@ Claro, aqui está a resposta em português:
 - **lib/main.dart**: Arquivo principal que inicializa o aplicativo e define a estrutura básica da interface do usuário.
 - **lib/harpas/home.dart**: Contém a tela principal para exibir a lista de hinos e gerenciar favoritos.
 - **lib/favoritos/home.dart**: Contém a tela para exibir e gerenciar a lista de hinos favoritos.
-- **lib/contatos/home.dart**: Contém a tela para exibir informações de contato.
-- **lib/doacoes/home.dart**: Contém a tela para gerenciar doações.
 - **lib/palavra/home.dart**: Contém a tela para exibir o louvor do dia.
 
 ### Tecnologias Utilizadas
@@ -39,8 +37,6 @@ Claro, aqui está a resposta em português:
 - **Lista de Hinos**: Exibe uma lista de hinos com a opção de adicionar aos favoritos.
 - **Favoritos**: Permite adicionar e remover hinos da lista de favoritos.
 - **Louvor do Dia**: Exibe um louvor diário.
-- **Contatos**: Exibe informações de contato.
-- **Doações**: Gerencia doações.
 
 ### Gerenciamento de Estado
 
