@@ -53,3 +53,10 @@ Claro, aqui está a resposta em português:
 ### API Utilizada
 
 - **API de Hinos**: O aplicativo utiliza uma API para buscar a lista de hinos. A API fornece os dados dos hinos, incluindo número, título e letras. A integração com a API é feita utilizando requisições HTTP e os dados são processados e exibidos no aplicativo.
+
+- **URL da API**: `http://overclock.kinghost.net:21055/hinos`
+- **Campos Retornados**:
+  - `numero` (int): Número do hino.
+  - `title` (String): Título do hino.
+  - `letra` (String): Letra do hino.
+  - Banco de Dados: A API está vinculada ao banco de dados MongoDB.
